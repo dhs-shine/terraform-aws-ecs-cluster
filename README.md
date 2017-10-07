@@ -9,7 +9,7 @@ Based on [this other terraform module](https://github.com/azavea/terraform-aws-e
 ```tf
 
 module "container_service_cluster" {
-  source = "github.com/santi698/terraform-aws-ecs-cluster?ref=0.1.0"
+  source = "github.com/santi698/terraform-aws-ecs-cluster?ref=1.0.0"
 
   ami_id        = "ami-b2df2ca4"
   instance_type = "t2.micro"
