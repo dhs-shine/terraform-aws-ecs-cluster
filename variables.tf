@@ -1,118 +1,68 @@
-variable "project" {
-  default = "Unknown"
+variable "name" {
+  type        = "string"
+  description = "The name of the created cluster"
 }
 
-variable "environment" {
-  default = "Unknown"
-}
-
-variable "vpc_id" {}
-
-variable "ami_id" {}
-
-variable "root_block_device_type" {
-  default = "gp2"
-}
-
-variable "root_block_device_size" {
-  default = "8"
+variable "ami_id" {
+  type        = "string"
+  description = "The id of the ami used for the instances, ECS optimized ami's are recommended"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  type        = "string"
+  description = "The EC2 instance type for the cluster instances"
+  default     = "t2.micro"
 }
 
-variable "key_name" {}
-
-variable "cloud_config" {}
-
-variable "health_check_grace_period" {
-  default = "600"
+variable "security_group_ids" {
+  type        = "list"
+  description = "The security group ids to be attached to the cluster instances"
+  default     = []
 }
 
-variable "desired_capacity" {
-  default = "1"
+variable "root_block_device_type" {
+  type        = "string"
+  description = "The type of the volume for the EBS volumes attached to the cluster instances"
+  default     = "gp2"
+}
+
+variable "root_block_device_size" {
+  type        = "string"
+  description = "The size of the EBS volume attached to the cluster instances"
+  default     = "8"
+}
+
+variable "subnet_ids" {
+  type        = "list"
+  description = "The subnet ids where the cluster will be launched"
 }
 
 variable "min_size" {
-  default = "1"
+  type        = "string"
+  description = "The minimum amount of instances in the cluster"
+  default     = "0"
 }
 
 variable "max_size" {
-  default = "1"
+  type        = "string"
+  description = "The maximum amount of instances in the cluster"
+  default     = "0"
 }
 
-variable "enabled_metrics" {
-  default = [
-    "GroupMinSize",
-    "GroupMaxSize",
-    "GroupDesiredCapacity",
-    "GroupInServiceInstances",
-    "GroupPendingInstances",
-    "GroupStandbyInstances",
-    "GroupTerminatingInstances",
-    "GroupTotalInstances",
-  ]
-
-  type = "list"
+variable "desired_capacity" {
+  type        = "string"
+  description = "The amount of instances the cluster is expected to have normally"
+  default     = "1"
 }
 
-variable "private_subnet_ids" {
-  type = "list"
+variable "key_name" {
+  type        = "string"
+  description = "The SSH key pair name for the cluster instances"
+  default     = ""
 }
 
-variable "scale_up_cooldown_seconds" {
-  default = "300"
-}
-
-variable "scale_down_cooldown_seconds" {
-  default = "300"
-}
-
-variable "high_cpu_evaluation_periods" {
-  default = "2"
-}
-
-variable "high_cpu_period_seconds" {
-  default = "300"
-}
-
-variable "high_cpu_threshold_percent" {
-  default = "90"
-}
-
-variable "low_cpu_evaluation_periods" {
-  default = "2"
-}
-
-variable "low_cpu_period_seconds" {
-  default = "300"
-}
-
-variable "low_cpu_threshold_percent" {
-  default = "10"
-}
-
-variable "high_memory_evaluation_periods" {
-  default = "2"
-}
-
-variable "high_memory_period_seconds" {
-  default = "300"
-}
-
-variable "high_memory_threshold_percent" {
-  default = "90"
-}
-
-variable "low_memory_evaluation_periods" {
-  default = "2"
-}
-
-variable "low_memory_period_seconds" {
-  default = "300"
-}
-
-variable "low_memory_threshold_percent" {
-  default = "10"
+variable "tags" {
+  type        = "list"
+  description = "A list of tags to attach to cluster instances"
+  default     = []
 }
