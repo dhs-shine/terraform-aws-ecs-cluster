@@ -8,6 +8,26 @@ output "name" {
   description = "The name of the ECS cluster in AWS"
 }
 
+output "cluster_autoscaling_group_name" {
+  value       = "${module.autoscaling.this_autoscaling_group_name}"
+  description = "The group name for the ECS cluster autoscaling group"
+}
+
+output "cluster_autoscaling_group_arn" {
+  value       = "${module.autoscaling.this_autoscaling_group_arn}"
+  description = "The arn for the ECS cluster autoscaling group"
+}
+
+output "cluster_autoscaling_group_id" {
+  value       = "${module.autoscaling.this_autoscaling_group_arn}"
+  description = "The id for the ECS cluster autoscaling group"
+}
+
+output "cluster_launch_configuration_id" {
+  value       = "${module.this_launch_configuration_id}"
+  description = "The id of the launch configuration of the ECS cluster autoscaling group"
+}
+
 output "ecs_service_role_name" {
   value       = "${aws_iam_role.ecs_service_role.name}"
   description = "The role to assign to services that need to use a loadbalancer."
