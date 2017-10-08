@@ -32,10 +32,10 @@ module "autoscaling" {
   key_name             = "${var.key_name}"
   user_data            = "${data.template_cloudinit_config.container_instance_cloud_config.rendered}"
 
-  root_block_device = {
+  root_block_device = [{
     volume_type = "${var.root_block_device_type}"
     volume_size = "${var.root_block_device_size}"
-  }
+  }]
 
   # Auto scaling group
   asg_name            = "${var.name}AutoScalingGroup"
