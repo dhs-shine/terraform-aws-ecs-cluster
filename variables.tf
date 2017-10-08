@@ -46,7 +46,7 @@ variable "min_size" {
 variable "max_size" {
   type        = "string"
   description = "The maximum amount of instances in the cluster"
-  default     = "0"
+  default     = "1"
 }
 
 variable "desired_capacity" {
