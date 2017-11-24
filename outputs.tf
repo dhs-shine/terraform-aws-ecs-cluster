@@ -24,7 +24,7 @@ output "cluster_autoscaling_group_id" {
 }
 
 output "cluster_launch_configuration_id" {
-  value       = "${module.this_launch_configuration_id}"
+  value       = "${module.autoscaling.this_launch_configuration_id}"
   description = "The id of the launch configuration of the ECS cluster autoscaling group"
 }
 

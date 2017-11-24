@@ -66,3 +66,25 @@ variable "tags" {
   description = "A list of tags to attach to cluster instances"
   default     = []
 }
+
+variable "asg_default_cooldown" {
+  type        = "string"
+  description = "ASG cooldown seconds"
+  default     = 300
+}
+
+variable "asg_health_check_grace_period" {
+  type        = "string"
+  description = "ASG health check grace period"
+  default     = 300
+}
+
+variable "asg_protect_from_scale_in" {
+  description = "ASG protect from scale in"
+  default     = false
+}
+
+variable "asg_termination_policies" {
+  description = "ASG termination policies"
+  default     = ["default"]
+}

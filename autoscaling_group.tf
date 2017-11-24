@@ -23,7 +23,7 @@ module "autoscaling" {
   source = "terraform-aws-modules/autoscaling/aws"
 
   # Launch configuration
-  lc_name = "${var.name}LaunchConfiguration"
+  lc_name = "${var.name}_LaunchConfiguration"
 
   iam_instance_profile = "${aws_iam_instance_profile.container_instance.name}"
   image_id             = "${var.ami_id}"
@@ -38,12 +38,16 @@ module "autoscaling" {
   }]
 
   # Auto scaling group
-  asg_name            = "${var.name}AutoScalingGroup"
+  asg_name            = "${var.name}_AutoScalingGroup"
   vpc_zone_identifier = "${var.subnet_ids}"
   health_check_type   = "EC2"
   min_size            = "${var.min_size}"
   max_size            = "${var.max_size}"
   desired_capacity    = "${var.desired_capacity}"
+  health_check_grace_period = "${var.asg_health_check_grace_period}"
+  default_cooldown = "${var.asg_default_cooldown}"
+  protect_from_scale_in = "${var.asg_protect_from_scale_in}"
+  termination_policies = ["${var.asg_termination_policies}"]
 
   tags = "${var.tags}"
 }
