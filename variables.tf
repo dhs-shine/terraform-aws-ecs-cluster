@@ -20,17 +20,17 @@ variable "security_group_ids" {
   default     = []
 }
 
-variable "root_block_device_type" {
-  type        = "string"
-  description = "The type of the volume for the EBS volumes attached to the cluster instances"
-  default     = "gp2"
-}
-
-variable "root_block_device_size" {
-  type        = "string"
-  description = "The size of the EBS volume attached to the cluster instances"
-  default     = "8"
-}
+//variable "root_block_device_type" {
+//  type        = "string"
+//  description = "The type of the volume for the EBS volumes attached to the cluster instances"
+//  default     = "gp2"
+//}
+//
+//variable "root_block_device_size" {
+//  type        = "string"
+//  description = "The size of the EBS volume attached to the cluster instances"
+//  default     = "8"
+//}
 
 variable "subnet_ids" {
   type        = "list"
