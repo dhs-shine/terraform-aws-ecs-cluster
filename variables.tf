@@ -88,3 +88,8 @@ variable "asg_termination_policies" {
   description = "ASG termination policies"
   default     = ["default"]
 }
+
+variable "ecs_private_registry" {
+  type        = "string"
+  default     = "hub.docker.com"
+}

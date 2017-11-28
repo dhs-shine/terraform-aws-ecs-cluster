@@ -5,7 +5,8 @@ data "template_file" "container_instance_base_cloud_config" {
   template = "${file("${path.module}/cloud-config/base-container-instance.yml.tpl")}"
 
   vars {
-    ecs_cluster_name = "${aws_ecs_cluster.this.name}"
+    ecs_cluster_name               = "${aws_ecs_cluster.this.name}"
+    ecs_private_registry           = "${var.ecs_private_registry}"
   }
 }
 
