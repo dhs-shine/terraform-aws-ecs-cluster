@@ -21,7 +21,7 @@ data "template_cloudinit_config" "container_instance_cloud_config" {
 }
 
 module "autoscaling" {
-  source = "github.com/terraform-aws-modules/terraform-aws-autoscaling?ref=v1.2.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-autoscaling?ref=v2.0.0"
 
   # Launch configuration
   lc_name = "${var.name}_LaunchConfiguration"
