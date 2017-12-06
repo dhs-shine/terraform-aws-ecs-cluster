@@ -23,6 +23,8 @@ data "template_cloudinit_config" "container_instance_cloud_config" {
 module "autoscaling" {
   source = "github.com/terraform-aws-modules/terraform-aws-autoscaling?ref=v2.0.0"
 
+  name            = "$AutoScalingGroup"
+
   # Launch configuration
   lc_name = "${var.name}_LaunchConfiguration"
 
@@ -34,7 +36,7 @@ module "autoscaling" {
   user_data            = "${data.template_cloudinit_config.container_instance_cloud_config.rendered}"
 
   # Auto scaling group
-  asg_name            = "${var.name}_AutoScalingGroup"
+  asg_name            = "${var.name}_"
   vpc_zone_identifier = "${var.subnet_ids}"
   health_check_type   = "EC2"
   min_size            = "${var.min_size}"
